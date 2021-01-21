@@ -1,7 +1,11 @@
 var cont=document.querySelector("#container");
 var clean=document.querySelector("#clean");
 var range=document.querySelector("#range");
-
+//var colorbtn=document.querySelector("#color");
+var colorinput=document.querySelector("#colorinput");
+var color=`black`;
+colorinput.addEventListener('input', colorset);
+//colorbtn.addEventListener('click', colorset);
 range.addEventListener('input',sizechange);
 clean.addEventListener('click', erase);
 window.addEventListener("load",()=>{grid(16)});
@@ -18,17 +22,17 @@ function grid(size){
     }
     var eachdiv=cont.querySelectorAll('div');
     eachdiv.forEach((item)=>{
-        item.addEventListener('mouseover',colorset);
+        item.addEventListener('mouseover',colorpick);
         item.style.transition=`all 0.3s`;
         console.log(item);
     });
 }
 
-function colorset(){
-    this.style.backgroundColor=`black`;
+function colorpick(){
+    this.style.backgroundColor=`${color}`;
     this.style.transitionDelay=`0.1s`;
 }
-function erase(){
+function cleandiv(){
     var eachdiv=cont.querySelectorAll('div');
     eachdiv.forEach((item)=>{
       item.remove();
@@ -36,6 +40,16 @@ function erase(){
 
 }
 function sizechange(){
-    erase();
+    cleandiv();
+    color=black;
     grid(range.value);
+}
+function erase(){
+    var eachdiv=cont.querySelectorAll('div');
+    eachdiv.forEach((item)=>{
+    item.style.backgroundColor=`antiquewhite`
+    });
+}
+function colorset(event){
+    color=event.target.value;
 }
