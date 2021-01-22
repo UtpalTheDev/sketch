@@ -7,3 +7,8 @@ background-color: antiquewhite;
 grid-template-rows:repeat(16,1fr);*/
 
 }
+.wrapper{
+    width:50vw;
+    height:50vh;
+    
+}
