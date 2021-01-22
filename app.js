@@ -3,12 +3,18 @@ var clean=document.querySelector("#clean");
 var range=document.querySelector("#range");
 //var colorbtn=document.querySelector("#color");
 var colorinput=document.querySelector("#colorinput");
+var eraser=document.querySelector("#eraser");
+
 var color=`black`;
+
+eraser.addEventListener('click',eraseperdiv);
 colorinput.addEventListener('input', colorset);
 //colorbtn.addEventListener('click', colorset);
 range.addEventListener('input',sizechange);
 clean.addEventListener('click', erase);
 window.addEventListener("load",()=>{grid(16)});
+
+
 function grid(size){
     var maxdiv=size*size;
     cont.style.gridTemplateColumns=`repeat(${size},1fr)`;
@@ -52,4 +58,7 @@ function erase(){
 }
 function colorset(event){
     color=event.target.value;
+}
+function eraseperdiv(){
+    color=`antiquewhite`;
 }
