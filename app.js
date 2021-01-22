@@ -110,6 +110,7 @@ function editor(){
 
         item.addEventListener('mousedown',colorpick);
         item.addEventListener('touchmove',colorpick);
+        item.classList.add(`hovering`);
         item.style.transition=`all 0.3s`;
         //console.log(item);
     });
@@ -123,6 +124,7 @@ function editor(){
 
             item.addEventListener('mouseover',colorpick);
             item.addEventListener('touchmove',colorpick);
+            item.classList.remove(`hovering`);
             item.style.transition=`all 0.3s`;
             //console.log(item);
         });

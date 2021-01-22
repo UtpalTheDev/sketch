@@ -21,3 +21,11 @@ body{
     height:100vh;
     width:100vw;
 }
+
+.hovering{
+
+}
+.hovering:hover{
+    border:3px solid red;
+    cursor:pointer;
+}
