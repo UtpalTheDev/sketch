@@ -30,6 +30,7 @@ function grid(size){
     var eachdiv=cont.querySelectorAll('div');
     eachdiv.forEach((item)=>{
         item.addEventListener('mouseover',colorpick);
+        item.addEventListener('touchstart',colorpick);
         item.style.transition=`all 0.3s`;
         console.log(item);
     });
