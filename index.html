@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="style.css" rel=stylesheet>
 </head>
+
 <body>
-    <button id="clean">Clean</button>
-<input type="range" min=16 max=100 id="range">
-<input type=color id="colorinput">
-<button id="eraser">eraser</button>
-<button id="rainbow">Rainbow</button>
-<button id="fullscreen">fullscreen</button>
-<button id="edit">Edit pixel</button>
-<div class="wrapper">
-    <div id="container" class="container">
+    <div class="controls">
+        <button id="clean">Clean</button>
+        <div class="rangefixer">
+            <span class="rangelabel">PixelSize</span>
+            <input type="range" min=16 max=100 id="range">
+        </div>
+        <input type=color id="colorinput">
+        <button id="eraser">Eraser</button>
+        <button id="rainbow">Rainbow</button>
+        <button id="fullscreen">Fullscreen</button>
+        <button id="edit">Pixel Mode</button>
+        <button id="grid">Grid View</button>
+    </div>
+
+    <div class="wrapper">
+        <div id="container" class="container">
+
+        </div>
 
     </div>
-    
-</div>
 
- <script src="app.js"></script>   
+    <script src="app.js"></script>
 </body>
+
 </html>

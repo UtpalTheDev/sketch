@@ -7,12 +7,18 @@ var eraser=document.querySelector("#eraser");
 var rainbow=document.querySelector("#rainbow");
 var fullscreen=document.querySelector("#fullscreen");
 var edit=document.querySelector("#edit");
+var grider=document.querySelector("#grid");
 
 var rainbowsetvar=0;
 var color=`black`;
 var screen=0;
 var editorvar=0;
+var erasevar=0;
+var gridvar=0;
+var dblclickvar=0;
 
+cont.addEventListener('dblclick',doubleclick);
+grider.addEventListener('click',gridview);
 edit.addEventListener('click', editor);
 fullscreen.addEventListener('click',fullScreen);
 rainbow.addEventListener('click',rainbowsetter);
@@ -45,11 +51,13 @@ function grid(size){
 }
 
 function colorpick(){
+    if(dblclickvar==0){
     if(rainbowsetvar===1){
         rainbowset();
     }
     this.style.backgroundColor=`${color}`;
     this.style.transitionDelay=`0.1s`;
+   }
 }
 function cleandiv(){
     var eachdiv=cont.querySelectorAll('div');
@@ -70,20 +78,56 @@ function erase(){
     item.style.backgroundColor=`antiquewhite`
     });
     color=`black`;
+    eraser.style.transform=`scale(1)`;
+    erasevar=0;
+    rainbow.style.transform=`scale(1)`;
+
 }
 function colorset(event){
     rainbowsetvar=0;
     color=event.target.value;
+    eraser.style.transform=`scale(1)`;
+    erasevar=0;
+
 }
 function eraseperdiv(){
-    rainbowsetvar=0;
-    color=`antiquewhite`;
+   
+   
+    if(erasevar==0){
+        rainbowsetvar=0;
+        color=`antiquewhite`;
+        eraser.style.transform=`scale(0.9)`;
+        rainbow.style.transform=`scale(1)`;
+
+        erasevar=1;
+    }
+    else{
+       color=`black`;    
+       eraser.style.transform=`scale(1)`;
+       erasevar=0;
+    }
+    console.log(erasevar);
 }
 function rainbowset(){
     color=`rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`;
 }
 function rainbowsetter(){
-    rainbowsetvar=1;
+    
+    if(rainbowsetvar==0){
+        
+       
+        rainbow.style.transform=`scale(0.9)`;
+        eraser.style.transform=`scale(1)`;
+        erasevar=0;
+
+        rainbowsetvar=1;
+    }
+    else{
+       color=`black`;    
+       rainbow.style.transform=`scale(1)`;
+       rainbowsetvar=0;
+    }
+    
 }
 function fullScreen(){
  
@@ -103,7 +147,7 @@ function fullScreen(){
 function editor(){
     
     if(editorvar===0){
-    edit.innerHTML=`Normal`   ; 
+    edit.innerHTML=`Normal Mode`   ; 
     var eachdiv=cont.querySelectorAll('div');
     eachdiv.forEach((item)=>{
         item.removeEventListener('mouseover',colorpick);
@@ -117,7 +161,7 @@ function editor(){
     editorvar=1;
     }
     else{
-        edit.innerHTML=`Edit pixel`   ; 
+        edit.innerHTML=`Pixel Mode`   ; 
         var eachdiv=cont.querySelectorAll('div');
         eachdiv.forEach((item)=>{
             item.removeEventListener('mousedown',colorpick);
@@ -131,4 +175,33 @@ function editor(){
         editorvar=0;
     }
 
+}
+
+function gridview(){
+    if(gridvar==0)
+    {
+        var eachdiv=cont.querySelectorAll('div');
+        eachdiv.forEach((item)=>{
+          item.style.border=`1px solid gray`;
+        });
+       
+     grider.style.transform=`scale(0.9)`;
+     gridvar=1;
+    }
+    else{
+        var eachdiv=cont.querySelectorAll('div');
+        eachdiv.forEach((item)=>{
+          item.style.border=`0px solid gray`;
+        });
+     grider.style.transform=`scale(1)`;
+     gridvar=0;
+    }
+}
+
+function doubleclick(){
+    if(dblclickvar==0){
+       dblclickvar=1;
+    }else{
+      dblclickvar=0
+    }
 }
